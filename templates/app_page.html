@@ -151,6 +151,7 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
                     <form name="sentMessage" id="contactForm" novalidate>
+                    	{% csrf_token %}
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Name</label>
@@ -233,6 +234,8 @@
 	
 	<!-- Main JS (Do not remove) -->
 	<script src="{% static "app_page/js/main.js" %}"></script>
+	<script src="{% static "app_page/js/jqBootstrapValidation.js" %}"></script>
+	<script src="{% static "app_page/js/contact_us.js" %}"></script>
 
 	{% render_block "js" %}
 	</body>
