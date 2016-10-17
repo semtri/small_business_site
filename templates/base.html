@@ -16,15 +16,18 @@
 	
 	    <!-- Theme CSS -->
 	    <link href="{% static "css/freelancer.min.css" %}" rel="stylesheet">
-	
+		<link type="text/css" href="{{MEDIA_URL}}js/jquery-ui-1.7.1.custom.css" rel="Stylesheet" />
 	    <!-- Custom Fonts -->
 	    <link href="{% static "vendor/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
 	    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 	    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
         {% render_block "css" %}
+        
+        {% block extrahead %}{% endblock %}
     </head>
     <body>
         {% cms_toolbar %}
+                
 		<!-- Navigation -->
 	    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
 	        <div class="container">
@@ -43,6 +46,21 @@
 	                </ul>
 	            </div>
 	            <!-- /.navbar-collapse -->
+	            {% if user.is_authenticated %}
+					{% if messages %}
+					    {% for message in messages %}
+					      <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
+					          <strong>{{ message }}</strong>
+					      </div>
+					    {% endfor %}
+					{% endif %}
+					<a href="/accounts/logout">Logout</a>
+					<a href="{% url 'todo-lists' %}">To-do Lists</a>
+			        <a href="{% url 'todo-mine' %}">My Tasks</a>
+			    {% else %}
+			    	<a href="/accounts/login">Login</a>
+	            {% endif %}
+	            
 	        </div>
 	        <!-- /.container-fluid -->
 	    </nav>
@@ -122,6 +140,10 @@
 	
 	    <!-- Theme JavaScript -->
 	    <script src="{% static "js/freelancer.min.js" %}"></script>
+	    
+		<script type="text/javascript" src="{{MEDIA_URL}}js/ui.core.js"></script>
+		<script src="{{MEDIA_URL}}js/ui.datepicker.js" type="text/javascript"></script>
+	    
         {% render_block "js" %}
     </body>
 </html>
