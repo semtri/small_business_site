@@ -15,12 +15,12 @@ urlpatterns = [
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
         {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^select2/', include('django_select2.urls')),
-    url(r'^contact_us/', contact_us)
+    url(r'^contact_us/', contact_us),
+    url(r'^accounts/', include('allauth.urls')),
 ]
 
 urlpatterns += i18n_patterns('',
     url(r'^admin/', include(admin.site.urls)),  # NOQA
-    url(r'^accounts/', include('allauth.urls')),
     url(r'^todo/', include('todo.urls')),
     url(r'^', include('cms.urls')),
 )
