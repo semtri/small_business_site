@@ -7,7 +7,7 @@ from django.conf.urls import include, patterns, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from .views import contact_us
+from .views import contact_us, login_dlg
 
 admin.autodiscover()
 
@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^select2/', include('django_select2.urls')),
     url(r'^contact_us/', contact_us),
     url(r'^accounts/', include('allauth.urls')),
+    url(r'^login_dlg/', login_dlg),
 ]
 
 urlpatterns += i18n_patterns('',

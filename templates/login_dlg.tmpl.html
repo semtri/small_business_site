@@ -1,0 +1,28 @@
+{% load cms_tags socialaccount %}
+
+<md-dialog aria-label="Sign In">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h3>Sign In</h3>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()" aria-label="Close">
+        	<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+     <div class="md-dialog-content" layout="column" layout-align="center">
+   
+    <div class="social-sizes">
+ 		<a class="btn btn-block btn-social btn-lg btn-google" href="{% provider_login_url 'google' %}">
+			<span class="fa fa-google"></span>Sign in with Google</a>
+		<a class="btn btn-block btn-social btn-lg btn-github" href="{% provider_login_url 'github' %}">
+			<span class="fa fa-github"></span>Sing in with GitHub</a>
+
+      </div>
+    </div>
+    </md-dialog-content>
+  </form>
+</md-dialog>
