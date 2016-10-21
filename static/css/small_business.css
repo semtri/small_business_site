@@ -1,0 +1,70 @@
+/*!
+ * Start Bootstrap - Blog Home (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+.navbar-default {
+    background-color: #fff;
+    border-color: #eeeeee;
+}
+.navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 1px;
+}
+@media (min-width: 768px)
+.navbar-fixed-top, .navbar-fixed-bottom {
+    border-radius: 0;
+}
+.navbar-fixed-top, .navbar-fixed-bottom {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+@media (min-width: 768px)
+.navbar {
+    border-radius: 4px;
+}
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 0px;
+    border: 1px solid transparent;
+}
+
+header {
+    color: white;
+    text-align: center;
+    padding: 75px 0;
+    background-color: #424242;
+    background-image: url(/img/bg.png);
+}
+
+@media (min-width: 768px)
+header.marquee .marquee-brand {
+    font-size: 9rem;
+    line-height: 10rem;
+}
+header.marquee .marquee-brand {
+    font-size: 5rem;
+    line-height: 5rem;
+    font-family: 'PT Sans Caption', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+}
+
+footer {
+	border-top: 5px solid #154164;
+    background: #206298 none repeat scroll 0% 0%;
+    padding-top: 30px;
+    margin-top: 60px;
+    clear: both;
+    color: #AAA;
+    display: block;
+}
+
+.footer-below {
+	color: #AAA;
+    background: #154164 none repeat scroll 0% 0%;
+    padding: 10px 0px;	
+}
