@@ -44,6 +44,23 @@
         {% block extrahead %}{% endblock %}
     </head>
     <body {% block ng-controller %}{% endblock %}>
+	   <script>
+		window.fbAsyncInit = function() {
+	   		FB.init({
+				appId      : '1248229925205245',
+				xfbml      : true,
+				version    : 'v2.8'
+				});
+		};
+	
+		(function(d, s, id){
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {return;}
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
         {% cms_toolbar %}
                 
 		<!-- Navigation -->
@@ -59,8 +76,7 @@
 		                    <span class="icon-bar"></span>
 		                </button>
 		                <a class="navbar-brand" href="/">Semtri Inc.</a>
-		            </div>
-		        
+		            </div>		        
 		            <!-- Collect the nav links, forms, and other content for toggling -->
 		            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		                <ul class="nav navbar-nav">
@@ -79,6 +95,9 @@
             						</li>
             						<li>
             							<a href="{% url 'todo-mine' %}">My Tasks</a>
+            						</li>
+            						<li>
+            							<a href="/accounts/social/connections/">Social Accounts</a>
             						</li>
             						{% endif %}
 									<li class="align-center">
@@ -125,22 +144,32 @@
 	            <div class="container">
 	                <div class="row">
 	                    <div class="footer-col col-md-4">
-	                        <h3>Location</h3>
+	                        <h3>CONTACT</h3>
 	                        <p>28, Yatap-ro, Bundang-gu, 
-	                        <br>Seongnam-si, Gyeonggi-do, 
-	                        	<br>13522, Rep. of KOREA</p>
+	                        	<br>Seongnam-si, Gyeonggi-do, 
+	                        	<br>13522, Rep. of KOREA
+	                        </p>
+	                        <p>
+	                        +82-31-715-9456
+	                        </p>
+	                        <p>
+	                        <a href="mailto:semtri@semtri.com">semtri@semtri.com</a>
+	                        </p>
 	                    </div>
 	                    <div class="footer-col col-md-4">
 	                        <h3>Around the Web</h3>
 	                        <ul class="list-inline">
 	                            <li>
-	                                <a class="btn btn-social-icon btn-facebook"><i class="fa fa-fw fa-facebook"></i></a>
+	                                <a class="btn btn-social-icon btn-facebook" href="https://www.facebook.com/Semtri-1471511353061303">
+	                                <i class="fa fa-fw fa-facebook"></i></a>
 	                            </li>
 	                            <li>
-	                                <a class="btn btn-social-icon btn-google"><i class="fa fa-fw fa-google-plus"></i></a>
+	                                <a class="btn btn-social-icon btn-google" href="https://plus.google.com/107894219233011802450">
+	                                <i class="fa fa-fw fa-google-plus"></i></a>
 	                            </li>
 	                            <li>
-	                                <a class="btn btn-social-icon btn-linkedin"><i class="fa fa-fw fa-linkedin"></i></a>
+	                                <a class="btn btn-social-icon btn-linkedin" href="https://www.linkedin.com/company/semtri-inc.">
+	                                <i class="fa fa-fw fa-linkedin"></i></a>
 	                            </li>
 	                            <li>
 	                                <a class="btn btn-social-icon btn-github" href="https://github.com/semtri">
@@ -151,6 +180,13 @@
 	                    <div class="footer-col col-md-4">
 	                        <h3>About Semtri Inc.</h3>
 	                        <p>Semtri will strive to achieve the advanced information technology with you.</p>
+	                    	<div class="fb-like" 
+							data-href="http://semtri.com" 
+							data-layout="button_count" 
+							data-action="like" 
+							data-size="large" 
+							data-show-faces="true" 
+							data-share="true"></div>
 	                    </div>
 	                </div>
 	            </div>

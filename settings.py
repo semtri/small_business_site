@@ -168,6 +168,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.facebook',
     
     'small_business_site'
 ]
@@ -239,9 +240,34 @@ SOCIALACCOUNT_PROVIDERS = {
                            'google':
                            {'SCOPE':['profile', 'email'],
                             'AUTH_PARAMS': { 'access_type': 'online' } 
+                            },
+                           'facebook':
+                           {'METHOD': 'oauth2',
+                            'SCOPE': ['email', 'public_profile', 'user_friends'],
+                            'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+                            'FIELDS': [
+                                       'id',
+                                       'email',
+                                       'first_name',
+                                       'last_name',
+                                       'verified',
+                                       'locale',
+                                       'timezone',
+                                       'link',
+                                       'gender',
+                                       'updated_time'],
+                            'EXCHANGE_TOKNE': True,
+                            'VERIFIED_EMAIL': False,
+                            'VERSION': 'v2.8',
                             }
                            }
 
 LOGIN_REDIRECT_URL = '/'
 
 TODO_STAFF_ONLY=True
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
