@@ -4,6 +4,7 @@ Created on 2016. 8. 7.
 @author: dennis
 '''
 
+import datetime
 from django.db import models
 
 from cms.extensions import PageExtension
@@ -23,3 +24,11 @@ class AppInfoExtension(PageExtension):
     
          
 extension_pool.register(AppInfoExtension)
+
+class ContactUs(models.Model):
+    category = models.CharField(max_length=128)
+    name = models.CharField(max_length=256)
+    phone = models.CharField(max_length=128)
+    email = models.CharField(max_length=256)
+    message = models.TextField()
+    received = models.DateTimeField(default=datetime.datetime.now)

@@ -95,7 +95,7 @@
 		            <li class="active"><a href="#" data-nav-section="home"><span>Home</span></a></li>
 		            <li><a href="#" data-nav-section="features"><span>Features</span></a></li>
 		            <li><a href="#" data-nav-section="download"><span>Download</span></a></li>
-		            <li><a href="#" data-nav-section="contact"><span>Contact</span></a></li>
+		            <li><a href="#" data-nav-section="support"><span>Support</span></a></li>
 		          </ul>
 		        </div>
 			    </nav>
@@ -140,11 +140,11 @@
 	</div>
 
     <!-- Contact Section -->
-	<div id="fh5co-contact" data-section="contact">
+	<div id="fh5co-contact" data-section="support">
 		<div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Contact Us</h2>
+                    <h2>Support</h2>
                     <hr class="star-primary">
                 </div>
             </div>
@@ -169,7 +169,7 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Phone Number</label>
-                                <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your phone number.">
+                                <input type="tel" class="form-control" placeholder="Phone Number" id="phone">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -184,6 +184,7 @@
                         <div id="success"></div>
                         <div class="row">
                             <div class="form-group col-xs-12">
+                            	<input type="hidden" id="category" value="{% page_attribute 'page_title' %}">
                                 <button type="submit" class="btn btn-success btn-lg">Send</button>
                             </div>
                         </div>

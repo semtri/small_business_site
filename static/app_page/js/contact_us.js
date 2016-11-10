@@ -13,7 +13,23 @@ function getCookie(name) {
       }
  return cookieValue;
 }
-
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+function sameOrigin(url) {
+    // test that a given url is a same-origin URL
+    // url could be relative or scheme relative or absolute
+    var host = document.location.host; // host + port
+    var protocol = document.location.protocol;
+    var sr_origin = '//' + host;
+    var origin = protocol + sr_origin;
+    // Allow absolute or scheme relative URLs to same origin
+    return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+        (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+        // or any other URL that isn't scheme relative or absolute i.e relative.
+        !(/^(\/\/|http:|https:).*/.test(url));
+}
 $(function() {
 
     $("#contactForm input,#contactForm textarea").jqBootstrapValidation({
@@ -26,20 +42,34 @@ $(function() {
             $("#btnSubmit").attr("disabled", true);
             event.preventDefault();
             
+            var csrftoken = getCookie('csrftoken');
+            
             // get values from FORM
             var name = $("input#name").val();
             var email = $("input#email").val();
             var phone = $("input#phone").val();
             var message = $("textarea#message").val();
+            var category = $("input#category").val();
             var firstName = name; // For Success/Failure Message
             // Check for white space in name for Success/Fail message
             if (firstName.indexOf(' ') >= 0) {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
+                        // Send the token to same-origin, relative URLs only.
+                        // Send the token only if the method warrants CSRF protection
+                        // Using the CSRFToken value acquired earlier
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
+            });
             $.ajax({
-                url: "/contact_us/",
+                url: "/support/",
                 type: "POST",
                 data: {
+                	category: category,
                     name: name,
                     phone: phone,
                     email: email,

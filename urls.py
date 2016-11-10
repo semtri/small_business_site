@@ -15,9 +15,9 @@ urlpatterns = [
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
         {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^select2/', include('django_select2.urls')),
-    url(r'^contact_us/', contact_us),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^login_dlg/', login_dlg),
+    url(r'^support/$', contact_us),
 ]
 
 urlpatterns += i18n_patterns('',
